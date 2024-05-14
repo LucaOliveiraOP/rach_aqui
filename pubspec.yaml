@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^4.15.5
   smooth_page_indicator: ^1.0.2
   flutter_svg: ^2.0.4
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
