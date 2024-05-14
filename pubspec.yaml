@@ -1,14 +1,24 @@
 name: rach_aqui_project
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.3.4 <4.0.0'
+  sdk: ">=3.3.4 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.2
+  iconsax: ^0.0.8
+  google_nav_bar: ^5.0.6
+  firebase_auth: ^4.17.4
+  firebase_core: ^2.25.4
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.4
+  cloud_firestore: ^4.15.5
+  smooth_page_indicator: ^1.0.2
+  flutter_svg: ^2.0.4
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +27,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
