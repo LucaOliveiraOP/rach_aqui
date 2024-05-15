@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rach_aqui_project/theme.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Onbording extends StatefulWidget {
@@ -15,7 +16,7 @@ class _OnbordingState extends State<Onbording> {
   bool isLastPage = false;
   String _titulo = 'Seja Bem vindo(a)!';
   String _texto =
-      'Com o RachAqui, divida a conta com os amigos sem estresse. Calcule facilemente o valor que cada um deve pagar.';
+      'Com o RachAqui, divida a conta com os amigos sem estresse. Calcule facilmente o valor que cada um deve pagar.';
 
   @override
   void initState() {
@@ -34,7 +35,6 @@ class _OnbordingState extends State<Onbording> {
   void _onPageChanged() {
     setState(() {
       _paginaAtual = _controller.page!;
-      isLastPage = _paginaAtual == _controller.viewportFraction - 1;
       atualizarTextoDoCampo();
       atualizarTextoDoTitulo();
     });
@@ -64,7 +64,7 @@ class _OnbordingState extends State<Onbording> {
     if (_paginaAtual == 0) {
       setState(() {
         _texto =
-            'Com o RachAqui, divida a conta com os amigos sem estresse. Calcule facilemente o valor que cada um deve pagar.';
+            'Com o RachAqui, divida a conta com os amigos sem estresse. Calcule facilmente o valor que cada um deve pagar.';
       });
     } else if (_paginaAtual == 1) {
       setState(() {
@@ -102,7 +102,7 @@ class _OnbordingState extends State<Onbording> {
                   ),
                   constraints: const BoxConstraints.expand(),
                   child: Padding(
-                      padding: const EdgeInsets.only(bottom: 100.0),
+                      padding: const EdgeInsets.only(bottom: 200.0),
                       child: SvgPicture.asset('assets/images/Group1.svg')),
                 )
               ],
@@ -116,7 +116,7 @@ class _OnbordingState extends State<Onbording> {
               ),
               constraints: const BoxConstraints.expand(),
               child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
+                  padding: const EdgeInsets.only(bottom: 190.0),
                   child: SvgPicture.asset('assets/images/Group2.svg')),
             ),
             Container(
@@ -128,7 +128,7 @@ class _OnbordingState extends State<Onbording> {
               ),
               constraints: const BoxConstraints.expand(),
               child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
+                  padding: const EdgeInsets.only(bottom: 200.0),
                   child: SvgPicture.asset('assets/images/Group3.svg')),
             )
           ],
@@ -136,7 +136,7 @@ class _OnbordingState extends State<Onbording> {
       ),
       bottomSheet: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        height: 300,
+        height: 330,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
           child: Column(
@@ -145,50 +145,68 @@ class _OnbordingState extends State<Onbording> {
               const SizedBox(
                 width: 10,
               ),
-              Text(_titulo),
-              Text(_texto),
-              Row(
-                children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      controller: _controller,
-                      count: 3,
-                      effect: const ExpandingDotsEffect(
-                          dotHeight: 7,
-                          dotWidth: 8,
-                          activeDotColor: Color(0xFFAC1304)),
+              SizedBox(
+                height: 150,
+                width: 400,
+                child: Column(
+                  children: [
+                    Text(
+                      _titulo,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontFamily: 'Montserrat-Bold',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 25,
+                        color: CustomColors.seventhColor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      _texto,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontFamily: 'Montserrat-SemiBold',
+                        fontWeight: FontWeight.w300,
+                        fontSize: 18,
+                        color: CustomColors.eighthColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SmoothPageIndicator(
+                controller: _controller,
+                count: 3,
+                effect: const ExpandingDotsEffect(
+                    dotHeight: 7,
+                    dotWidth: 8,
+                    activeDotColor: CustomColors.sixthColor),
               ),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 TextButton(
                   onPressed: () => _controller.jumpToPage(2),
-                  child: const Text('Pular'),
-                ),
-                Center(
-                  child: SmoothPageIndicator(
-                    controller: _controller,
-                    count: 3,
-                    effect: const ExpandingDotsEffect(
-                        dotHeight: 7,
-                        dotWidth: 8,
-                        activeDotColor: Color(0xFFAC1304)),
+                  child: const Text(
+                    'Pular',
+                    style: TextStyle(
+                      fontFamily: 'Montserrat-Thin',
+                      fontWeight: FontWeight.w200,
+                      fontSize: 15,
+                      color: CustomColors.seventhColor,
+                    ),
                   ),
                 ),
                 TextButton(
                   onPressed: () => _controller.nextPage(
                       duration: const Duration(milliseconds: 400),
                       curve: Curves.easeInOut),
-                  child: SvgPicture.asset('assets/images/circuloseta3.svg'),
+                  child: SvgPicture.asset('assets/images/onbordingseta.svg'),
                 ),
               ]),
+              const SizedBox(
+                width: 20,
+              ),
             ],
           ),
         ),
